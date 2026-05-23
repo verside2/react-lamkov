@@ -10,6 +10,18 @@ const tasksAPI = {
      .then(res => res.json())
   },
 
+  getById: (id) => {
+    return fetch(`${URL}/${id}`)
+     .then(res => res.json())
+     .then(res => {
+      if (res.error) {
+        throw res.error;
+      }
+
+      return res;
+     });
+  },
+
   add: (task) => {
     return fetch(URL, {
       method: "POST",
