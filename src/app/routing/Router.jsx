@@ -46,8 +46,6 @@ const Router = (props) => {
     routes,
   } = props;
 
-  console.log("routes", routes);
-
   const path = useRoute();
 
   for (const route in routes) {
