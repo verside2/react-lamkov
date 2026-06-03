@@ -1,3 +1,5 @@
+import { BASE_URL } from "@/shared/constants";
+
 const RouterLink = (props) => {
   const {
     to,
@@ -14,7 +16,7 @@ const RouterLink = (props) => {
 
   return (
     // TODO: занести в заметки, что можно вот так разворачивать пропсы
-    <a href={to} onClick={handleClick} {...rest}>
+    <a href={`${BASE_URL}${to}`} onClick={handleClick} {...rest}>
       {children}
     </a>
   );

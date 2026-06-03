@@ -11,8 +11,6 @@ export const TasksProvider = (props) => {
 
   const {
     addTask,
-    newTaskTitle,
-    setNewTaskTitle,
     newTaskInputRef,
     searchQuery,
     setSearchQuery,
@@ -32,8 +30,6 @@ export const TasksProvider = (props) => {
 
   const value = useMemo(() => ({
     addTask,
-    newTaskTitle,
-    setNewTaskTitle,
     newTaskInputRef,
     searchQuery,
     setSearchQuery,
@@ -48,8 +44,6 @@ export const TasksProvider = (props) => {
     firstIncompleteTaskId,
   }), [
     addTask,
-    newTaskTitle,
-    setNewTaskTitle,
     newTaskInputRef,
     searchQuery,
     setSearchQuery,

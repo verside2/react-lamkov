@@ -1,0 +1,57 @@
+const URL = "http://localhost:3001/tasks";
+
+const headers = {
+  "Content-Type": "application/json"
+};
+
+const serverAPI = {
+  getAll: () => {
+    return fetch(URL)
+     .then(res => res.json())
+  },
+
+  getById: (id) => {
+    return fetch(`${URL}/${id}`)
+     .then(res => res.json())
+     .then(res => {
+      if (res.error) {
+        throw res.error;
+      }
+
+      return res;
+     });
+  },
+
+  add: (task) => {
+    return fetch(URL, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(task)
+    })
+     .then(res => res.json())
+  },
+
+  delete: (id) => {
+    return fetch(`${URL}/${id}`, {
+      method: "DELETE",
+    })
+  },
+
+  deleteAll: (tasks) => {
+    return Promise.all(
+      tasks.map(({id}) => {
+        return serverAPI.delete(id);
+      })
+    )
+  },
+
+  toggleComplete: (id, isDone) => {
+    return fetch(`${URL}/${id}`, {
+      method: "PATCH",
+      headers,
+      body: JSON.stringify({isDone})
+    })
+  }, 
+}
+
+export default serverAPI;
